@@ -1,0 +1,6 @@
+{
+  "is_production": "true",
+  "api_origin": "http://guoweitang.net:3000",
+  "api_pathname": "",
+  "version": "v1.0.0"
+}
