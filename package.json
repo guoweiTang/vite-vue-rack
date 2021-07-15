@@ -1,6 +1,6 @@
 {
   "name": "vite-vue-rack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guoweiTang/vite-vue-rack.git"
@@ -20,6 +20,9 @@
   "homepage": "http://guoweitang.net:8080/",
   "scripts": {
     "dev": "vite",
+    "prettier": "prettier -c --write \"src/**/*\"",
+    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
+    "lint": "pnpm lint:prettier",
     "build": "vite build",
     "serve": "vite preview"
   },
@@ -28,7 +31,6 @@
     "axios-auth-refresh": "^3.1.0",
     "axios-retry": "^3.1.9",
     "element-plus": "^1.0.2-beta.54",
-    "mockjs": "^1.1.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
@@ -36,8 +38,16 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.5",
+    "husky": "^7.0.1",
+    "mockjs": "^1.1.0",
+    "prettier": "^2.3.2",
     "sass": "^1.35.2",
     "vite": "^2.4.0",
     "vite-plugin-mock": "^2.9.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
