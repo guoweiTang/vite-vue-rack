@@ -6,10 +6,7 @@ import store from './store';
 import axios from 'axios';
 import { setSettings } from './config';
 
-const url =
-    import.meta.env.DEV
-    ? 'settings.json'
-    : 'settings-pro.json';
+const url = import.meta.env.DEV ? 'settings.json' : 'settings-pro.json';
 axios(url)
   .then(({ data }) => {
     setSettings(data);
