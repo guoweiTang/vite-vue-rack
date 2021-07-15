@@ -20,7 +20,10 @@ pnpm dev
 ```
 pnpm build
 ```
-
+### Prettier for development
+```
+pnpm prettier
+```
 ## Preview
 > [online preview](http://guoweitang.net:8080/)
 
@@ -36,6 +39,8 @@ pnpm build
 - vuex
 - authorization
 - mock
+- prettier
+- precommit lint
 
 ## Customize configuration
 See [Configuration Reference](https://vitejs.dev/).
