@@ -1,5 +1,23 @@
 {
-  "version": "0.0.0",
+  "name": "vite-vue-rack",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoweiTang/vite-vue-rack.git"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vite",
+    "template",
+    "rack"
+  ],
+  "author": "ice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guoweiTang/vite-vue-rack/issues"
+  },
+  "homepage": "http://guoweitang.net:8080/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

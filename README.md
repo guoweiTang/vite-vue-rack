@@ -1,24 +1,24 @@
-# vue-cli-plugin-rack
+# vite-vue-rack
 Element Plus plugin for `Vite` .
 
 ## Install
 
 ```bash
-git clone git@github.com:guoweiTang/vite-vue-project.git my-app
-cd my-app
-npm i
-npm run dev
+npx degit guoweiTang/vite-vue-rack my-rack-app
+cd my-rack-app
+pnpm i
+pnpm dev
 ```
 
 ## Project setup
 
 ### Compiles and hot-reloads for development and mock data
 ```
-npm run dev
+pnpm dev
 ```
 ### Compiles and minifies for production
 ```
-npm run build
+pnpm build
 ```
 
 ## Preview
@@ -39,4 +39,9 @@ npm run build
 
 ## Customize configuration
 See [Configuration Reference](https://vitejs.dev/).
+
+## Links
+- @vue/cli: [vue-cli-plugin-rack](https://github.com/guoweiTang/vue-cli-plugin-rack)
+
+- react: [cra-template-rack](https://github.com/guoweiTang/cra-template-rack)
 
