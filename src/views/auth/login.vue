@@ -3,151 +3,160 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 19:44:29
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-05-19 20:08:46
+ * @LastEditTime: 2021-12-07 15:43:54
 -->
-<template>
-  <teleport to="#app">
-    <div class="auth">
-      <div class="modal-box">
-        <div class="modal-header">
-          <dl class="auth-logo">
-            <dt>
-              <img
-                src="../../assets/logo.png"
-                alt="logo"
-                width="34"
-                height="34"
-              />
-            </dt>
-            <dd>VUE RACK</dd>
-          </dl>
-          <h2>登录</h2>
-          <p>登录以继续使用</p>
-        </div>
-        <el-form
-          label-position="top"
-          :model="ruleForm"
-          :rules="rules"
-          ref="ruleForm"
-          label-width="100px"
-          class="demo-ruleForm"
-          @keyup.enter="submitForm('ruleForm')"
-        >
-          <el-form-item label="邮箱" prop="email">
-            <el-input
-              placeholder="admin@vuerack.com"
-              v-model="ruleForm.email"
-              autocomplete="off"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="密码" prop="password">
-            <el-input
-              placeholder="vuerack"
-              show-password
-              type="password"
-              v-model="ruleForm.password"
-              autocomplete="off"
-            ></el-input>
-          </el-form-item>
-          <div :style="{ marginBottom: '10px', textAlign: 'right' }">
-            <router-link to="reset-password"
-              ><el-link type="primary" :underline="false"
-                >忘记密码？</el-link
-              ></router-link
-            >
-          </div>
-          <el-form-item>
-            <el-button
-              type="primary"
-              :loading="loading"
-              @click="submitForm('ruleForm')"
-              >登录</el-button
-            >
-          </el-form-item>
-          <div class="no-acoout">
-            还没有账户？<router-link :to="{ name: 'Register' }"
-              ><el-link type="primary" :underline="false"
-                >去注册</el-link
-              ></router-link
-            >
-          </div>
-        </el-form>
-      </div>
-    </div>
-  </teleport>
-</template>
-
-<script>
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
+import {
+  useStore,
+  mapMutations,
+} from 'vuex';
+import { useRouter, useRoute, LocationQueryValue } from 'vue-router';
+import { ElMessage } from 'element-plus';
 import { emailPattern } from '@/config';
-import { getToken } from '../service';
-import { setToken } from '@/utils/token';
+import { getToken } from '@/views/service';
 
-export default {
-  name: 'Login',
-  data() {
-    const validEmail = (rule, value, callback) => {
-      if (!emailPattern.test(value)) {
-        callback(new Error('请输入正确的邮箱'));
-      } else {
-        callback();
-      }
-    };
-    return {
-      // 是否表单提交中
-      loading: false,
-      // 表单值
-      ruleForm: {
-        email: 'admin@vuerack.com',
-        password: 'vuerack',
-      },
-      rules: {
-        email: [
-          { required: true, message: '请输入邮箱', trigger: 'blur' },
-          { validator: validEmail, trigger: 'blur' },
-        ],
-        password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, message: '密码至少为3个字符', trigger: 'blur' },
-        ],
-      },
-    };
-  },
-  methods: {
-    // 表单提交
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.loading = true;
-          getToken(this.ruleForm)
-            .then(({ data }) => {
-              this.loading = false;
-              const { access_token, refresh_token } = data;
-              setToken(access_token, refresh_token);
-              this.$message.success({
-                duration: 800,
-                message: '登录成功，正在跳转……',
-                onClose: () => {
-                  // 重定向对象不存在则返回顶层路径
-                  this.$router.replace(
-                    this.$route.query.redirect || {
-                      name: 'Home',
-                    }
-                  );
+const store = useStore();
+const router = useRouter();
+const route = useRoute();
+
+// 同步store数据
+const setToken = mapMutations('admin/user', ['setToken']).setToken.bind({ $store: store });
+
+// 是否加载中
+const loading = ref(false);
+// 邮箱校验
+const validEmail = (rule: any, value: string, callback: (arg0?: Error) => void) => {
+  if (!emailPattern.test(value)) {
+    callback(new Error('请输入正确的邮箱'));
+  } else {
+    callback();
+  }
+};
+// 表单数据
+const formData = reactive({
+  email: 'admin@vuerack.com',
+  password: 'vuerack',
+});
+// 表单校验规则
+const rules = reactive({
+  email: [
+    { required: true, message: '请输入邮箱', trigger: 'blur' },
+    { validator: validEmail, trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 3, message: '密码至少为3个字符', trigger: 'blur' },
+  ],
+});
+// 表单标识
+const ruleForm = ref();
+// 登录提交
+const submitForm = () => {
+  ruleForm.value.validate((valid: any) => {
+    if (valid) {
+      loading.value = true;
+      getToken({
+        router,
+        data: formData,
+      })
+        .then(({ data } : { data: any}) => {
+          loading.value = false;
+          const { accessToken, refreshToken } = data;
+          setToken({ accessToken, refreshToken });
+          ElMessage.success({
+            duration: 800,
+            message: '登录成功，正在跳转……',
+            onClose: () => {
+              // 重定向对象不存在则返回顶层路径
+              router.replace(
+                (route.query.redirect as LocationQueryValue) || {
+                  name: 'home',
                 },
-              });
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
-  },
+              );
+            },
+          });
+        })
+        .catch(() => {
+          loading.value = false;
+        });
+    } else {
+      console.log('error submit!!');
+    }
+  });
 };
 </script>
+
+<template>
+  <div class="auth">
+    <div class="modal-box">
+      <div class="modal-header">
+        <dl class="auth-logo">
+          <dt>
+            <img
+              src="../../assets/logo.png"
+              alt="logo"
+              width="34"
+              height="34"
+            />
+          </dt>
+          <dd>VUE RACK</dd>
+        </dl>
+        <h2>登录</h2>
+        <p>登录以继续使用</p>
+      </div>
+      <el-form
+        label-position="top"
+        :model="formData"
+        :rules="rules"
+        ref="ruleForm"
+        label-width="100px"
+        class="demo-ruleForm"
+        @keyup.enter="submitForm"
+      >
+        <el-form-item label="邮箱" prop="email">
+          <el-input
+            placeholder="admin@vuerack.com"
+            v-model.trim="formData.email"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input
+            placeholder="vuerack"
+            show-password
+            type="password"
+            v-model="formData.password"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <div :style="{ marginBottom: '10px', textAlign: 'right' }">
+          <router-link :to="{ name: 'resetPassword' }"
+            ><el-link type="primary" :underline="false"
+              >忘记密码？</el-link
+            ></router-link
+          >
+        </div>
+        <el-form-item>
+          <el-button
+            type="primary"
+            :loading="loading"
+            @click="submitForm"
+            >登录</el-button
+          >
+        </el-form-item>
+        <div class="no-acoout">
+          还没有账户？<router-link :to="{ name: 'register' }"
+            ><el-link type="primary" :underline="false"
+              >去注册</el-link
+            ></router-link
+          >
+        </div>
+      </el-form>
+    </div>
+  </div>
+</template>
+
 <style>
 .auth {
   display: flex;

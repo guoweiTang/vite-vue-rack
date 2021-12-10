@@ -1,56 +1,29 @@
 {
-  "name": "vite-vue-rack",
-  "version": "0.1.1",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guoweiTang/vite-vue-rack.git"
-  },
-  "keywords": [
-    "vue",
-    "vue3",
-    "vite",
-    "template",
-    "rack"
-  ],
-  "author": "ice",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/guoweiTang/vite-vue-rack/issues"
-  },
-  "homepage": "http://guoweitang.net:8080/",
+  "name": "my-vite-app",
+  "version": "1.0.0",
   "scripts": {
-    "prepare": "husky install",
     "dev": "vite",
-    "prettier": "prettier -c --write \"src/**/*\"",
-    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
-    "lint": "pnpm lint:prettier",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "axios-auth-refresh": "^3.1.0",
+    "vue": "^3.2.23",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0",
+    "element-plus": "1.1.0-beta.18",
+    "axios": "^0.23.0",
+    "axios-auth-refresh": "^3.2.1",
     "axios-retry": "^3.1.9",
-    "element-plus": "^1.0.2-beta.54",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.10",
-    "vuex": "^4.0.2"
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^7.0.1",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.0",
+    "vue-tsc": "^0.28.10",
+    "qs": "^6.10.2",
+    "sass": "^1.32.11",
     "mockjs": "^1.1.0",
-    "prettier": "^2.3.2",
-    "sass": "^1.35.2",
-    "vite": "^2.4.0",
-    "vite-plugin-eslint": "^1.3.0",
-    "vite-plugin-mock": "^2.9.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "vite-plugin-mock": "^2.9.6"
   }
 }
