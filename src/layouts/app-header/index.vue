@@ -3,13 +3,19 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:42:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-07 15:32:24
+ * @LastEditTime: 2021-12-13 17:02:49
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore, mapState } from 'vuex';
 import { clearToken } from '@/utils/token';
+import {
+  Fold,
+  Expand,
+  SwitchButton,
+  UserFilled,
+} from '@element-plus/icons-vue';
 
 /**
  * 继承至父组件的属性和方法
@@ -36,11 +42,7 @@ const handleMyself = () => {
 
 <template>
   <el-header height="75px">
-    <i
-      :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-      @click="$emit('handleToggleCollapse')"
-      style="cursor: pointer"
-    ></i>
+    <el-icon><component :is="collapse ? Expand : Fold" style="cursor: pointer" @click="$emit('handleToggleCollapse')" /></el-icon>
     <div class="logo-bar">
       <img src="../../assets/logo.png" alt="logo" />
       <span>VUE RACK</span>
@@ -49,12 +51,12 @@ const handleMyself = () => {
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
           <el-avatar
+            :icon="UserFilled"
             :class="userInfo.gender === '女' ? 'user-woman' : 'user-man'"
             :size="30"
             :src="userInfo.avatarUrl"
             @error="() => true"
           >
-            <i class="el-icon-user-solid"></i>
           </el-avatar>
           <span>{{ userInfo.name }}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
@@ -63,11 +65,11 @@ const handleMyself = () => {
           <el-dropdown-menu>
             <el-dropdown-item
               v-show="userInfo.role === '普通用户'"
-              icon="el-icon-user"
+              :icon="UserFilled"
               @click="handleMyself"
               >我的账户</el-dropdown-item
             >
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout"
+            <el-dropdown-item :icon="SwitchButton" @click="logout"
               >登出</el-dropdown-item
             >
           </el-dropdown-menu>

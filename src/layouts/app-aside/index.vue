@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:31:07
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-07 15:31:39
+ * @LastEditTime: 2021-12-13 17:42:47
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -99,5 +99,16 @@ const activeRoute = computed(mapState('admin/common', ['activeRoute']).activeRou
 .el-submenu .el-menu-item.is-active,
 .el-menu-item.is-active {
   background-color: #1890ff !important;
+}
+/* 修复左侧菜单收起图标跳动 */
+.el-menu-item > div {
+  display: flex !important;
+  align-items: center !important;
+}
+.el-sub-menu .el-icon,
+.el-menu-item [class^=el-icon],
+.el-menu--collapse>.el-menu-item [class^=el-icon],
+.el-menu--collapse>.el-sub-menu>.el-sub-menu__title [class^=el-icon] {
+  width: unset;
 }
 </style>

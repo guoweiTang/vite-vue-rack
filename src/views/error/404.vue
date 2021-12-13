@@ -3,11 +3,11 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:55:09
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-07 16:02:40
+ * @LastEditTime: 2021-12-13 11:54:54
 -->
 <template>
   <div class="error-page">
-    <el-row type="flex" justify="center" align="center">
+    <el-row type="flex" justify="center" align="middle">
       <el-col :span="6"><img src="../../assets/icon-404-color.svg" alt="404 icon" /></el-col>
       <el-col :span="4" :offset="2">
         <h2>404</h2>

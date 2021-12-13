@@ -1,11 +1,12 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@element-plus/icons-vue': ^0.2.4
   '@vitejs/plugin-vue': ^1.10.2
   axios: ^0.23.0
   axios-auth-refresh: ^3.2.1
   axios-retry: ^3.1.9
-  element-plus: 1.1.0-beta.18
+  element-plus: 1.2.0-beta.6
   mockjs: ^1.1.0
   qs: ^6.10.2
   sass: ^1.32.11
@@ -19,10 +20,11 @@ specifiers:
   vuex-persistedstate: ^4.1.0
 
 dependencies:
+  '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/0.2.4_vue@3.2.24
   axios: registry.npmmirror.com/axios/0.23.0
   axios-auth-refresh: registry.npmmirror.com/axios-auth-refresh/3.2.1_axios@0.23.0
   axios-retry: registry.npmmirror.com/axios-retry/3.2.4
-  element-plus: registry.npmmirror.com/element-plus/1.1.0-beta.18_vue@3.2.24
+  element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.6_vue@3.2.24
   vue: registry.npmmirror.com/vue/3.2.24
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.24
   vuex: registry.nlark.com/vuex/4.0.2_vue@3.2.24
@@ -693,12 +695,6 @@ packages:
     version: 0.13.9
     dev: false
 
-  registry.nlark.com/resize-observer-polyfill/1.5.1:
-    resolution: {integrity: sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz}
-    name: resize-observer-polyfill
-    version: 1.5.1
-    dev: false
-
   registry.nlark.com/to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/to-fast-properties/download/to-fast-properties-2.0.0.tgz}
     name: to-fast-properties
@@ -773,6 +769,17 @@ packages:
       '@babel/helper-validator-identifier': registry.nlark.com/@babel/helper-validator-identifier/7.15.7
       to-fast-properties: registry.nlark.com/to-fast-properties/2.0.0
     dev: true
+
+  registry.npmmirror.com/@element-plus/icons-vue/0.2.4_vue@3.2.24:
+    resolution: {integrity: sha512-RsJNyL58rwxtsjeMy34o8txkL6UlME1stWsUlRpTac6UE9Bx9gdJvnDXbIKhOJqBLX17fBjmposdrn6VTqim2w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@element-plus/icons-vue/download/@element-plus/icons-vue-0.2.4.tgz}
+    id: registry.npmmirror.com/@element-plus/icons-vue/0.2.4
+    name: '@element-plus/icons-vue'
+    version: 0.2.4
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: registry.npmmirror.com/vue/3.2.24
+    dev: false
 
   registry.npmmirror.com/@emmetio/abbreviation/2.2.2:
     resolution: {integrity: sha1-dGdi/Z56jC6mBPWAxi48/iUOaYk=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@emmetio/abbreviation/download/@emmetio/abbreviation-2.2.2.tgz}
@@ -1016,11 +1023,11 @@ packages:
     name: '@vue/shared'
     version: 3.2.24
 
-  registry.npmmirror.com/@vueuse/core/6.1.0_vue@3.2.24:
-    resolution: {integrity: sha1-gTfCkc9JsRwt7aTVB5CW5Vs2/Cg=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-6.1.0.tgz}
-    id: registry.npmmirror.com/@vueuse/core/6.1.0
+  registry.npmmirror.com/@vueuse/core/7.3.0_vue@3.2.24:
+    resolution: {integrity: sha512-gPJyMMAquva9Qwqz63qGQT122m5hWI8Kuy8kfPV/JLQU7m01CXooyv8FIrX9TV8OxVcHBTPXPJHY0oyUiFoNgw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-7.3.0.tgz}
+    id: registry.npmmirror.com/@vueuse/core/7.3.0
     name: '@vueuse/core'
-    version: 6.1.0
+    version: 7.3.0
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -1030,16 +1037,16 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@vueuse/shared': registry.npmmirror.com/@vueuse/shared/6.1.0_vue@3.2.24
+      '@vueuse/shared': registry.npmmirror.com/@vueuse/shared/7.3.0_vue@3.2.24
       vue: registry.npmmirror.com/vue/3.2.24
       vue-demi: registry.npmmirror.com/vue-demi/0.12.1_vue@3.2.24
     dev: false
 
-  registry.npmmirror.com/@vueuse/shared/6.1.0_vue@3.2.24:
-    resolution: {integrity: sha1-E3X9Qazv5S+aGELzxqijSHhlNbo=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-6.1.0.tgz}
-    id: registry.npmmirror.com/@vueuse/shared/6.1.0
+  registry.npmmirror.com/@vueuse/shared/7.3.0_vue@3.2.24:
+    resolution: {integrity: sha512-vOAeI84tIXKVkzm8s/Mxbrzhj0QN6NyVc/sC6LrW0AjVNdvpD8sB1dZiDn9yh8T77WJmloCEt4zZVIppeq7I+w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-7.3.0.tgz}
+    id: registry.npmmirror.com/@vueuse/shared/7.3.0
     name: '@vueuse/shared'
-    version: 6.1.0
+    version: 7.3.0
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -1174,22 +1181,22 @@ packages:
       domelementtype: 2.2.0
     dev: true
 
-  registry.npmmirror.com/element-plus/1.1.0-beta.18_vue@3.2.24:
-    resolution: {integrity: sha1-6xbQkQBKYYACx17Ycpkgj22/Zi4=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/element-plus/download/element-plus-1.1.0-beta.18.tgz}
-    id: registry.npmmirror.com/element-plus/1.1.0-beta.18
+  registry.npmmirror.com/element-plus/1.2.0-beta.6_vue@3.2.24:
+    resolution: {integrity: sha512-8EdSIR/5/FHcSB8w1diAh+gJMHgxIvxuZoayY99k6taAR1QyEFHuPTgFccZLopJ1+iP4UEsZFz49l57qS08Utw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/element-plus/download/element-plus-1.2.0-beta.6.tgz}
+    id: registry.npmmirror.com/element-plus/1.2.0-beta.6
     name: element-plus
-    version: 1.1.0-beta.18
+    version: 1.2.0-beta.6
     peerDependencies:
       vue: ^3.2.0
     dependencies:
+      '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/0.2.4_vue@3.2.24
       '@popperjs/core': registry.npmmirror.com/@popperjs/core/2.11.0
-      '@vueuse/core': registry.npmmirror.com/@vueuse/core/6.1.0_vue@3.2.24
+      '@vueuse/core': registry.npmmirror.com/@vueuse/core/7.3.0_vue@3.2.24
       async-validator: registry.npmmirror.com/async-validator/4.0.7
       dayjs: registry.nlark.com/dayjs/1.10.7
       lodash: 4.17.21
-      memoize-one: registry.npmmirror.com/memoize-one/5.2.1
+      memoize-one: registry.npmmirror.com/memoize-one/6.0.0
       normalize-wheel-es: registry.npmmirror.com/normalize-wheel-es/1.1.1
-      resize-observer-polyfill: registry.nlark.com/resize-observer-polyfill/1.5.1
       vue: registry.npmmirror.com/vue/3.2.24
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1447,10 +1454,10 @@ packages:
       promise: 7.3.1
     dev: true
 
-  registry.npmmirror.com/memoize-one/5.2.1:
-    resolution: {integrity: sha1-gzeqPEM1WBg57AHD1ZQJDOvo8A4=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/memoize-one/download/memoize-one-5.2.1.tgz}
+  registry.npmmirror.com/memoize-one/6.0.0:
+    resolution: {integrity: sha1-slkbhx7YKUiu5HJ9xqvO7qyMEEU=, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/memoize-one/download/memoize-one-6.0.0.tgz}
     name: memoize-one
-    version: 5.2.1
+    version: 6.0.0
     dev: false
 
   registry.npmmirror.com/nanoid/3.1.30:

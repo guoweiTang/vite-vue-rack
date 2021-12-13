@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 20:15:47
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-10 16:13:39
+ * @LastEditTime: 2021-12-13 14:26:37
 -->
 <script setup lang="ts">
 import {
@@ -91,7 +91,7 @@ defineExpose({
   >
     <el-form ref="form" :model="formData" :rules="rules">
       <el-form-item label="所有商品共查询详情次数">{{ totalCount }}次</el-form-item>
-      <el-form-item label="商品图片">
+      <el-form-item label="商品图片" v-if="formData.imgUrl">
         <el-image
           hide-on-click-modal
           style="width: 100px;"

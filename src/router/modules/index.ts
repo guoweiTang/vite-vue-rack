@@ -3,9 +3,15 @@
  * @Author: tangguowei
  * @Date: 2021-10-13 16:51:37
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-07 19:03:30
+ * @LastEditTime: 2021-12-13 16:13:01
  */
 import { RouteRecordRaw } from 'vue-router';
+import {
+  House,
+  Grid,
+  User,
+  Lock,
+} from '@element-plus/icons-vue';
 import Home from '@/views/home/index.vue';
 import UserInfo from '@/views/account/index.vue';
 import Authorzation from '@/views/account/authorzation.vue';
@@ -19,7 +25,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
     meta: {
       auth: true,
       title: '首页',
-      icon: 'el-icon-s-home',
+      icon: House,
     },
     component: Home,
   },
@@ -28,7 +34,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
     name: 'table',
     meta: {
       title: '列表',
-      icon: 'el-icon-s-grid',
+      icon: Grid,
       auth: true,
     },
     component: Layout,
@@ -51,7 +57,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
     name: 'account',
     meta: {
       title: '个人账户',
-      icon: 'el-icon-user-solid',
+      icon: User,
       auth: true,
     },
     component: Layout,
@@ -64,7 +70,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
         name: 'authorzation',
         meta: {
           title: '用户权限',
-          icon: 'el-icon-lock',
+          icon: Lock,
         },
         component: Authorzation,
       },
