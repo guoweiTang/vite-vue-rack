@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:42:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 17:02:49
+ * @LastEditTime: 2021-12-13 17:55:15
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -15,6 +15,7 @@ import {
   Expand,
   SwitchButton,
   UserFilled,
+  ArrowDown,
 } from '@element-plus/icons-vue';
 
 /**
@@ -59,7 +60,7 @@ const handleMyself = () => {
           >
           </el-avatar>
           <span>{{ userInfo.name }}</span>
-          <i class="el-icon-arrow-down el-icon--right"></i>
+          <el-icon style="margin-left: 5px;"><ArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
