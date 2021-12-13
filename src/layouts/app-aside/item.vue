@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 10:57:36
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 16:08:41
+ * @LastEditTime: 2021-12-13 18:38:19
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -48,7 +48,7 @@ const isShowing = computed(() => {
         <span>{{ item.meta?.title }}</span>
       </template>
     </el-menu-item>
-    <el-sub-menu v-else class="no-drop-down" :index="item.name as string">
+    <el-sub-menu v-else :index="item.name as string">
       <template #title>
         <el-icon v-if="item.meta?.icon">
           <component :is="item.meta.icon" />

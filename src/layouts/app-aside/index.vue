@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:31:07
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 17:42:47
+ * @LastEditTime: 2021-12-13 18:42:43
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -85,18 +85,18 @@ const activeRoute = computed(mapState('admin/common', ['activeRoute']).activeRou
 .el-menu {
   border-right: none !important;
 }
-.el-submenu.is-active > .el-submenu__title,
-.el-submenu.is-active > .el-submenu__title i,
-.el-submenu__title:hover,
-.el-submenu__title:hover i,
+.el-sub-menu.is-active > .el-sub-menu__title,
+.el-sub-menu.is-active > .el-sub-menu__title i,
+.el-sub-menu__title:hover,
+.el-sub-menu__title:hover i,
 .el-menu-item:hover,
 .el-menu-item:hover i {
   color: #fff !important;
 }
-.el-submenu .el-menu-item {
+.el-sub-menu .el-menu-item {
   background-color: #000c17 !important;
 }
-.el-submenu .el-menu-item.is-active,
+.el-sub-menu .el-menu-item.is-active,
 .el-menu-item.is-active {
   background-color: #1890ff !important;
 }
