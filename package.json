@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "dev:mock": "vite --mode mock",
     "build": "vue-tsc --noEmit && vite build",
     "lint": "eslint \"src/**/*.{vue,ts,tsx}\" --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",

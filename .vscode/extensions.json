@@ -1,3 +1,7 @@
 {
-  "recommendations": ["johnsoncodehk.volar"]
+  "recommendations": [
+    "johnsoncodehk.volar",
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint"
+  ]
 }
