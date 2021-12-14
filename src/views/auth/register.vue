@@ -90,7 +90,7 @@ const submitForm = async () => {
               alt="logo"
               width="34"
               height="34"
-            />
+            >
           </dt>
           <dd>VUE RACK</dd>
         </dl>
@@ -98,50 +98,63 @@ const submitForm = async () => {
         <p>创建你的免费账户</p>
       </div>
       <el-form
+        ref="ruleForm"
         label-position="top"
         :model="formData"
         :rules="rules"
-        ref="ruleForm"
         label-width="100px"
         class="demo-ruleForm"
         @keyup.enter="submitForm"
       >
-        <el-form-item label="邮箱" prop="email">
+        <el-form-item
+          label="邮箱"
+          prop="email"
+        >
           <el-input
             v-model.trim="formData.email"
             autocomplete="off"
-          ></el-input>
+          />
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item
+          label="密码"
+          prop="password"
+        >
           <el-input
-            show-password
-            type="password"
             v-model="formData.password"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="确认密码" prop="checkPassword">
-          <el-input
             show-password
             type="password"
-            v-model="formData.checkPassword"
             autocomplete="off"
-          ></el-input>
+          />
+        </el-form-item>
+        <el-form-item
+          label="确认密码"
+          prop="checkPassword"
+        >
+          <el-input
+            v-model="formData.checkPassword"
+            show-password
+            type="password"
+            autocomplete="off"
+          />
         </el-form-item>
         <el-form-item>
           <el-button
             type="primary"
-            @click="submitForm"
             :loading="loading"
-            >注册</el-button
+            @click="submitForm"
           >
+            注册
+          </el-button>
         </el-form-item>
         <div class="no-acoout">
-          已有账户？<router-link :to="{ name: 'login' }"
-            ><el-link type="primary" :underline="false"
-              >去登录</el-link
-            ></router-link
-          >
+          已有账户？<router-link :to="{ name: 'login' }">
+            <el-link
+              type="primary"
+              :underline="false"
+            >
+              去登录
+            </el-link>
+          </router-link>
         </div>
       </el-form>
     </div>

@@ -98,7 +98,7 @@ const submitForm = () => {
               alt="logo"
               width="34"
               height="34"
-            />
+            >
           </dt>
           <dd>VUE RACK</dd>
         </dl>
@@ -106,51 +106,64 @@ const submitForm = () => {
         <p>登录以继续使用</p>
       </div>
       <el-form
+        ref="ruleForm"
         label-position="top"
         :model="formData"
         :rules="rules"
-        ref="ruleForm"
         label-width="100px"
         class="demo-ruleForm"
         @keyup.enter="submitForm"
       >
-        <el-form-item label="邮箱" prop="email">
+        <el-form-item
+          label="邮箱"
+          prop="email"
+        >
           <el-input
-            placeholder="admin@vuerack.com"
             v-model.trim="formData.email"
+            placeholder="admin@vuerack.com"
             autocomplete="off"
-          ></el-input>
+          />
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item
+          label="密码"
+          prop="password"
+        >
           <el-input
+            v-model="formData.password"
             placeholder="vuerack"
             show-password
             type="password"
-            v-model="formData.password"
             autocomplete="off"
-          ></el-input>
+          />
         </el-form-item>
         <div :style="{ marginBottom: '10px', textAlign: 'right' }">
-          <router-link :to="{ name: 'resetPassword' }"
-            ><el-link type="primary" :underline="false"
-              >忘记密码？</el-link
-            ></router-link
-          >
+          <router-link :to="{ name: 'resetPassword' }">
+            <el-link
+              type="primary"
+              :underline="false"
+            >
+              忘记密码？
+            </el-link>
+          </router-link>
         </div>
         <el-form-item>
           <el-button
             type="primary"
             :loading="loading"
             @click="submitForm"
-            >登录</el-button
           >
+            登录
+          </el-button>
         </el-form-item>
         <div class="no-acoout">
-          还没有账户？<router-link :to="{ name: 'register' }"
-            ><el-link type="primary" :underline="false"
-              >去注册</el-link
-            ></router-link
-          >
+          还没有账户？<router-link :to="{ name: 'register' }">
+            <el-link
+              type="primary"
+              :underline="false"
+            >
+              去注册
+            </el-link>
+          </router-link>
         </div>
       </el-form>
     </div>

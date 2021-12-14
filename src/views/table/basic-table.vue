@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 16:58:40
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-08 14:53:59
+ * @LastEditTime: 2021-12-14 15:19:37
 -->
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
@@ -71,15 +71,26 @@ onMounted(getGoodsRepositories);
 </script>
 
 <template>
-  <el-card class="search-card" shadow="never">
-    <el-form :inline="true" :model="{}">
+  <el-card
+    class="search-card"
+    shadow="never"
+  >
+    <el-form
+      :inline="true"
+      :model="{}"
+    >
       <el-form-item label="查询词">
-        <el-input v-model="searchQuery" placeholder="例：零食"></el-input>
+        <el-input
+          v-model="searchQuery"
+          placeholder="例：零食"
+        />
       </el-form-item>
       <Expect v-model:query="searchQuery">
         <template #first>
           <el-form-item class="first-item">
-            <el-button type="primary">插槽按钮</el-button>
+            <el-button type="primary">
+              插槽按钮
+            </el-button>
           </el-form-item>
         </template>
       </Expect>
@@ -91,28 +102,68 @@ onMounted(getGoodsRepositories);
       style="width: 100%"
       :default-sort="{ prop: 'date', order: 'descending' }"
     >
-      <el-table-column prop="name" label="商品名称"> </el-table-column>
-      <el-table-column prop="category" label="商品类型"> </el-table-column>
-      <el-table-column prop="spec" label="商品规格"> </el-table-column>
-      <el-table-column prop="saleDate" label="发售日期"> </el-table-column>
-      <el-table-column prop="description" label="商品介绍"> </el-table-column>
-      <el-table-column fixed="right" label="操作" width="150">
+      <el-table-column
+        prop="name"
+        label="商品名称"
+      />
+      <el-table-column
+        prop="category"
+        label="商品类型"
+      />
+      <el-table-column
+        prop="spec"
+        label="商品规格"
+      />
+      <el-table-column
+        prop="saleDate"
+        label="发售日期"
+      />
+      <el-table-column
+        prop="description"
+        label="商品介绍"
+      />
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="150"
+      >
         <template #default="{ row }">
-          <el-button type="text" size="small" @click="handleOperateModal(row.id, true)">详情</el-button>
-          <el-button type="text" size="small" @click="handleOperateModal(row.id)">编辑</el-button>
-          <el-button type="text" size="small" @click="handleDeleteModal(row)">删除</el-button>
+          <el-button
+            type="text"
+            size="small"
+            @click="handleOperateModal(row.id, true)"
+          >
+            详情
+          </el-button>
+          <el-button
+            type="text"
+            size="small"
+            @click="handleOperateModal(row.id)"
+          >
+            编辑
+          </el-button>
+          <el-button
+            type="text"
+            size="small"
+            @click="handleDeleteModal(row)"
+          >
+            删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
-   <el-pagination
+    <el-pagination
+      v-model:currentPage="page"
       style="text-align: center; margin-top: 16px;"
       layout="total, prev, pager, next"
-      v-model:currentPage="page"
       :page-size="size"
       :total="total"
-    ></el-pagination>
+    />
   </el-card>
-  <Operateodal @handleSubmit="getGoodsRepositories" ref="operateModal" />
+  <Operateodal
+    ref="operateModal"
+    @handle-submit="getGoodsRepositories"
+  />
 </template>
 
 <style lang="scss" scoped>

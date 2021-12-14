@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 20:15:47
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 14:26:37
+ * @LastEditTime: 2021-12-14 15:20:29
 -->
 <script setup lang="ts">
 import {
@@ -24,7 +24,7 @@ import { Goods } from '@/views/data.d';
 /**
  * 继承至父组件的属性和方法
  */
-const emit = defineEmits(['handleSubmit']);
+const emit = defineEmits(['handle-submit']);
 
 // 同步store数据
 const store = useStore();
@@ -70,7 +70,7 @@ const handleSubmit = () => {
           message: '保存成功',
         });
         visible.value = false;
-        emit('handleSubmit');
+        emit('handle-submit');
       } catch (e) {
         console.log(e);
       }
@@ -84,49 +84,105 @@ defineExpose({
 </script>
 <template>
   <el-dialog
+    v-model="visible"
     :width="560"
     :close-on-click-modal="isPreview"
-    v-model="visible"
     :title="isPreview ? '商品详情' : '商品编辑'"
   >
-    <el-form ref="form" :model="formData" :rules="rules">
-      <el-form-item label="所有商品共查询详情次数">{{ totalCount }}次</el-form-item>
-      <el-form-item label="商品图片" v-if="formData.imgUrl">
+    <el-form
+      ref="form"
+      :model="formData"
+      :rules="rules"
+    >
+      <el-form-item label="所有商品共查询详情次数">
+        {{ totalCount }}次
+      </el-form-item>
+      <el-form-item
+        v-if="formData.imgUrl"
+        label="商品图片"
+      >
         <el-image
           hide-on-click-modal
           style="width: 100px;"
           :src="formData.imgUrl"
           :preview-src-list="[formData.imgUrl]"
-        ></el-image>
+        />
       </el-form-item>
-      <el-form-item label="商品名称" prop="name">
-        <template v-if="isPreview">{{ formData.name }}</template>
-        <el-input v-else v-model="formData.name" />
+      <el-form-item
+        label="商品名称"
+        prop="name"
+      >
+        <template v-if="isPreview">
+          {{ formData.name }}
+        </template>
+        <el-input
+          v-else
+          v-model="formData.name"
+        />
       </el-form-item>
-      <el-form-item label="商品类型" prop="category">
-        <template v-if="isPreview">{{ formData.category }}</template>
-        <el-input v-else v-model="formData.category" />
+      <el-form-item
+        label="商品类型"
+        prop="category"
+      >
+        <template v-if="isPreview">
+          {{ formData.category }}
+        </template>
+        <el-input
+          v-else
+          v-model="formData.category"
+        />
       </el-form-item>
-      <el-form-item label="商品规格" prop="spec">
-        <template v-if="isPreview">{{ formData.spec }}</template>
-        <el-input v-else v-model="formData.spec" />
+      <el-form-item
+        label="商品规格"
+        prop="spec"
+      >
+        <template v-if="isPreview">
+          {{ formData.spec }}
+        </template>
+        <el-input
+          v-else
+          v-model="formData.spec"
+        />
       </el-form-item>
-      <el-form-item label="发售日期" prop="saleDate">
-        <template v-if="isPreview">{{ formData.saleDate }}</template>
+      <el-form-item
+        label="发售日期"
+        prop="saleDate"
+      >
+        <template v-if="isPreview">
+          {{ formData.saleDate }}
+        </template>
         <el-date-picker
           v-else
           v-model="formData.saleDate"
           type="date"
           value-format="YYYY-MM-DD"
-        ></el-date-picker>
+        />
       </el-form-item>
-      <el-form-item label="商品介绍" prop="description">
-        <template v-if="isPreview">{{ formData.description }}</template>
-        <el-input v-else type="textarea" v-model="formData.description" :autosize="{ minRows: 2, maxRows: 4 }" />
+      <el-form-item
+        label="商品介绍"
+        prop="description"
+      >
+        <template v-if="isPreview">
+          {{ formData.description }}
+        </template>
+        <el-input
+          v-else
+          v-model="formData.description"
+          type="textarea"
+          :autosize="{ minRows: 2, maxRows: 4 }"
+        />
       </el-form-item>
     </el-form>
-    <template v-if="!isPreview" #footer>
-      <el-button type="primary" @click="handleSubmit">提交</el-button>
+    <template
+      v-if="!isPreview"
+      #footer
+    >
+      <el-button
+        type="primary"
+        @click="handleSubmit"
+      >
+        提交
+      </el-button>
     </template>
   </el-dialog>
 </template>

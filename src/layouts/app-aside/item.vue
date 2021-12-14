@@ -48,7 +48,10 @@ const isShowing = computed(() => {
         <span>{{ item.meta?.title }}</span>
       </template>
     </el-menu-item>
-    <el-sub-menu v-else :index="item.name as string">
+    <el-sub-menu
+      v-else
+      :index="item.name as string"
+    >
       <template #title>
         <el-icon v-if="item.meta?.icon">
           <component :is="item.meta.icon" />

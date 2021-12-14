@@ -3,13 +3,12 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:42:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 17:55:15
+ * @LastEditTime: 2021-12-14 15:07:07
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore, mapState } from 'vuex';
-import { clearToken } from '@/utils/token';
 import {
   Fold,
   Expand,
@@ -17,6 +16,7 @@ import {
   UserFilled,
   ArrowDown,
 } from '@element-plus/icons-vue';
+import { clearToken } from '@/utils/token';
 
 /**
  * 继承至父组件的属性和方法
@@ -24,7 +24,7 @@ import {
 defineProps<{
   collapse: boolean
 }>();
-defineEmits(['handleToggleCollapse']);
+defineEmits(['handle-toggle-collapse']);
 
 const router = useRouter();
 const store = useStore();
@@ -43,9 +43,18 @@ const handleMyself = () => {
 
 <template>
   <el-header height="75px">
-    <el-icon><component :is="collapse ? Expand : Fold" style="cursor: pointer" @click="$emit('handleToggleCollapse')" /></el-icon>
+    <el-icon>
+      <component
+        :is="collapse ? Expand : Fold"
+        style="cursor: pointer"
+        @click="$emit('handle-toggle-collapse')"
+      />
+    </el-icon>
     <div class="logo-bar">
-      <img src="../../assets/logo.png" alt="logo" />
+      <img
+        src="../../assets/logo.png"
+        alt="logo"
+      >
       <span>VUE RACK</span>
     </div>
     <div class="avatar">
@@ -57,8 +66,7 @@ const handleMyself = () => {
             :size="30"
             :src="userInfo.avatarUrl"
             @error="() => true"
-          >
-          </el-avatar>
+          />
           <span>{{ userInfo.name }}</span>
           <el-icon style="margin-left: 5px;"><ArrowDown /></el-icon>
         </span>
@@ -68,11 +76,15 @@ const handleMyself = () => {
               v-show="userInfo.role === '普通用户'"
               :icon="UserFilled"
               @click="handleMyself"
-              >我的账户</el-dropdown-item
             >
-            <el-dropdown-item :icon="SwitchButton" @click="logout"
-              >登出</el-dropdown-item
+              我的账户
+            </el-dropdown-item>
+            <el-dropdown-item
+              :icon="SwitchButton"
+              @click="logout"
             >
+              登出
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

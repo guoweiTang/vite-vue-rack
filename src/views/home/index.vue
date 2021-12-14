@@ -14,8 +14,11 @@ const appTitle = ref(import.meta.env.VITE_APP_TITLE);
 
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../../assets/logo.png">
-    <HelloWorld :msg="`Welcome to Your ${appTitle} App`"/>
+    <img
+      alt="Vue logo"
+      src="../../assets/logo.png"
+    >
+    <HelloWorld :msg="`Welcome to Your ${appTitle} App`" />
   </div>
 </template>
 

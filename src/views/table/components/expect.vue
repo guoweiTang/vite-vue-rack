@@ -16,9 +16,11 @@ defineEmits(['update:query']);
 </script>
 <template>
   <el-form-item>
-    <el-tag @click="$emit('update:query', '零食')">零食</el-tag>
+    <el-tag @click="$emit('update:query', '零食')">
+      零食
+    </el-tag>
   </el-form-item>
-  <slot></slot>
+  <slot />
   <el-form-item>
     <i>定义插槽样式，更多内容，敬请期待……</i>
   </el-form-item>

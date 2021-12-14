@@ -24,7 +24,10 @@ const activeRoute = computed(mapState('admin/common', ['activeRoute']).activeRou
 </script>
 
 <template>
-  <el-aside width="auto" class="aside">
+  <el-aside
+    width="auto"
+    class="aside"
+  >
     <div class="menu-content">
       <el-menu
         class="aside-menu"
@@ -33,7 +36,7 @@ const activeRoute = computed(mapState('admin/common', ['activeRoute']).activeRou
         text-color="#7b8190"
         active-text-color="#fff"
         router
-        uniqueOpened
+        unique-opened
         :default-active="activeRoute.name"
       >
         <AsideItem

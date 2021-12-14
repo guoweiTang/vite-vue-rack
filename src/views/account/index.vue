@@ -58,8 +58,7 @@ const handleAvatarChange = async ({ size, raw: file } : { size: number; raw: any
       title="该页面只有普通用户能看到"
       style="margin-bottom: 20px"
       type="warning"
-    >
-    </el-alert>
+    />
     <el-upload
       class="avatar-uploader"
       action="#"
@@ -68,17 +67,20 @@ const handleAvatarChange = async ({ size, raw: file } : { size: number; raw: any
       :auto-upload="false"
     >
       <el-image
-        class="avatar"
         v-if="userInfo.avatarUrl"
+        class="avatar"
         :src="userInfo.avatarUrl"
       >
         <template #error>
           <div class="image-slot">
-            <i class="el-icon-picture-outline"></i>
+            <i class="el-icon-picture-outline" />
           </div>
         </template>
       </el-image>
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      <i
+        v-else
+        class="el-icon-plus avatar-uploader-icon"
+      />
     </el-upload>
     <editable-text
       label="用户名"

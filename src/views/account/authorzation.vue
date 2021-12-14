@@ -30,8 +30,7 @@ const handleConfirmRole = (value: string) => {
       title="默认仅“普通用户”可访问「我的账户」页面"
       :style="{ marginBottom: '20px' }"
       type="warning"
-    >
-    </el-alert>
+    />
     <editable-text
       type="radio"
       :options="[

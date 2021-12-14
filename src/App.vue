@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-09-27 17:52:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 18:15:42
+ * @LastEditTime: 2021-12-14 15:06:46
 -->
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
@@ -48,7 +48,7 @@ onMounted(() => {
       <el-container direction="vertical">
         <AppHeader
           :collapse="collapse"
-          @handleToggleCollapse="handleToggleCollapse"
+          @handle-toggle-collapse="handleToggleCollapse"
         />
         <el-main>
           <div class="app-container">
