@@ -3,15 +3,20 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 18:24:20
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-09-28 11:38:22
+ * @LastEditTime: 2021-12-16 11:23:56
  */
 import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import { RootState } from './data.d';
 import common from './admin/common';
 import user from './admin/user';
-import basicTable from './modules/basic-table';
 
+const modules = import.meta.globEager('./modules/*.ts');
+
+const storeModules: Record<string, unknown> = {};
+for (const path in modules) {
+  storeModules[(path.match(/([^\/]+)\.ts$/) as string[])[1]] = modules[path].default;
+}
 const store = createStore<RootState>({
   modules: {
     admin: {
@@ -21,7 +26,7 @@ const store = createStore<RootState>({
         user,
       },
     },
-    'basic-table': basicTable,
+    ...storeModules,
   },
   plugins: [
     createPersistedState({
