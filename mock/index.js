@@ -258,7 +258,6 @@ export default [
     rawResponse: (req, res) => {
       setUtf8(res);
       const goodsId = url.parse(req.url).pathname.split('/').pop();
-      (/^(\/[^\/]+){2}\/([^\/]+)/g).test(req.url);
       let result = allGoods.find(item => item.id ===  goodsId);
       if (!result) {
         res.statusCode = 400;
