@@ -3,16 +3,15 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 15:42:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-14 15:07:07
+ * @LastEditTime: 2022-02-08 16:19:47
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore, mapState } from 'vuex';
 import {
-  Fold,
   Expand,
-  SwitchButton,
+  Fold,
   UserFilled,
   ArrowDown,
 } from '@element-plus/icons-vue';
@@ -43,12 +42,11 @@ const handleMyself = () => {
 
 <template>
   <el-header height="75px">
-    <el-icon>
-      <component
-        :is="collapse ? Expand : Fold"
-        style="cursor: pointer"
-        @click="$emit('handle-toggle-collapse')"
-      />
+    <el-icon
+      style="cursor: pointer"
+      @click="$emit('handle-toggle-collapse')"
+    >
+      <component :is="collapse ? Expand : Fold" />
     </el-icon>
     <div class="logo-bar">
       <img
@@ -61,28 +59,25 @@ const handleMyself = () => {
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
           <el-avatar
-            :icon="UserFilled"
             :class="userInfo.gender === '女' ? 'user-woman' : 'user-man'"
             :size="30"
             :src="userInfo.avatarUrl"
             @error="() => true"
-          />
+          >
+            <el-icon><UserFilled /></el-icon>
+          </el-avatar>
           <span>{{ userInfo.name }}</span>
-          <el-icon style="margin-left: 5px;"><ArrowDown /></el-icon>
+          <el-icon class="el-icon--right"><ArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item
-              v-show="userInfo.role === '普通用户'"
-              :icon="UserFilled"
+              v-if="userInfo.role === '普通用户'"
               @click="handleMyself"
             >
               我的账户
             </el-dropdown-item>
-            <el-dropdown-item
-              :icon="SwitchButton"
-              @click="logout"
-            >
+            <el-dropdown-item @click="logout">
               登出
             </el-dropdown-item>
           </el-dropdown-menu>

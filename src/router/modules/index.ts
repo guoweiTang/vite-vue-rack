@@ -3,13 +3,13 @@
  * @Author: tangguowei
  * @Date: 2021-10-13 16:51:37
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 16:13:01
+ * @LastEditTime: 2022-02-07 16:39:01
  */
 import { RouteRecordRaw } from 'vue-router';
 import {
-  House,
+  HomeFilled,
   Grid,
-  User,
+  UserFilled,
   Lock,
 } from '@element-plus/icons-vue';
 import Home from '@/views/home/index.vue';
@@ -25,7 +25,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
     meta: {
       auth: true,
       title: '首页',
-      icon: House,
+      icon: HomeFilled,
     },
     component: Home,
   },
@@ -57,7 +57,7 @@ const mainRoutes: Array<RouteRecordRaw> = [
     name: 'account',
     meta: {
       title: '个人账户',
-      icon: User,
+      icon: UserFilled,
       auth: true,
     },
     component: Layout,

@@ -3,15 +3,15 @@
  * @Author: tangguowei
  * @Date: 2021-09-27 17:52:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 14:36:07
+ * @LastEditTime: 2022-02-08 16:21:11
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { ElLoading } from 'element-plus';
 import store from '@/store';
+import { clearToken } from '@/utils/token';
 import commonRoutes from './modules/common';
 import authRoutes from './modules/auth';
 import mainRoutes from './modules/index';
-import { clearToken } from '@/utils/token';
 
 export const routes: Array<RouteRecordRaw> = [
   ...mainRoutes,

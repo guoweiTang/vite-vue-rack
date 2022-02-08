@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 10:57:36
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-13 18:38:19
+ * @LastEditTime: 2022-02-07 16:41:15
 -->
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -38,7 +38,7 @@ const isShowing = computed(() => {
   <template v-if="isShowing">
     <el-menu-item
       v-if="!item.children || !item.children.length"
-      :index="item.name as string"
+      :index="item.name"
       :route="{ name: item.name }"
     >
       <el-icon v-if="item.meta?.icon">
@@ -50,7 +50,8 @@ const isShowing = computed(() => {
     </el-menu-item>
     <el-sub-menu
       v-else
-      :index="item.name as string"
+      class="no-drop-down"
+      :index="item.name"
     >
       <template #title>
         <el-icon v-if="item.meta?.icon">

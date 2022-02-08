@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-09-27 17:52:49
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-14 15:06:46
+ * @LastEditTime: 2022-02-08 16:14:19
 -->
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
@@ -39,18 +39,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-container style="height: 100vh;">
+  <el-container>
     <el-main v-if="isScreen">
       <router-view />
     </el-main>
     <template v-else>
       <AppAside :collapse="collapse" />
-      <el-container direction="vertical">
-        <AppHeader
-          :collapse="collapse"
-          @handle-toggle-collapse="handleToggleCollapse"
-        />
+      <el-container>
         <el-main>
+          <AppHeader
+            :collapse="collapse"
+            @handle-toggle-collapse="handleToggleCollapse"
+          />
           <div class="app-container">
             <router-view />
           </div>
@@ -63,11 +63,10 @@ onMounted(() => {
 
 <style scoped>
 .app-container {
-  min-height: calc(100vh - 75px - 40px - 60px);
+  box-sizing: border-box;
+  padding: var(--el-main-padding);
+  min-height: calc(100vh - 75px - 60px);
   min-width: 1000px;
-}
-.el-header {
-  z-index: 1;
 }
 </style>
 <style lang="scss">

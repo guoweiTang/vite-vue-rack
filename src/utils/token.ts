@@ -3,14 +3,14 @@
  * @Author: tangguowei
  * @Date: 2021-08-19 15:47:29
  * @LastEditors: tangguowei
- * @LastEditTime: 2021-12-08 14:08:12
+ * @LastEditTime: 2022-02-07 16:09:23
  */
 import axios from 'axios';
 import { Router } from 'vue-router';
 import { apiBaseURL } from '@/config';
 import store from '@/store';
-import { AxiosRequestConfigCustom } from './data.d';
 import { Token } from '@/store/data.d';
+import { AxiosRequestConfigCustom } from './data.d';
 
 /**
  * 清除token，并重新登陆
