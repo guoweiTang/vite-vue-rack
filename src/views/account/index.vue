@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-05-19 19:44:29
  * @LastEditors: tangguowei
- * @LastEditTime: 2022-02-07 17:43:36
+ * @LastEditTime: 2022-02-08 16:31:24
 -->
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
@@ -40,7 +40,7 @@ const handleAvatarChange = async ({ size, raw: file } : { size: number; raw: any
   } else {
     const {
       data: { avatarUrl },
-    } = await uploadFile({
+    } : any = await uploadFile({
       router,
       data: {
         file,
