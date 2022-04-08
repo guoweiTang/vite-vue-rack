@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2021-10-13 16:51:37
  * @LastEditors: tangguowei
- * @LastEditTime: 2022-02-07 16:39:01
+ * @LastEditTime: 2022-04-08 17:25:54
  */
 import { RouteRecordRaw } from 'vue-router';
 import {
@@ -11,11 +11,13 @@ import {
   Grid,
   UserFilled,
   Lock,
+  Stamp
 } from '@element-plus/icons-vue';
 import Home from '@/views/home/index.vue';
 import UserInfo from '@/views/account/index.vue';
 import Authorzation from '@/views/account/authorzation.vue';
 import BasicTable from '@/views/table/basic-table.vue';
+import Editing from '@/views/editing/index.vue';
 import Layout from '@/layouts/basic-layout.vue';
 
 const mainRoutes: Array<RouteRecordRaw> = [
@@ -51,6 +53,16 @@ const mainRoutes: Array<RouteRecordRaw> = [
         component: BasicTable,
       },
     ],
+  },
+  {
+    path: '/editing',
+    name: 'editing',
+    meta: {
+      auth: true,
+      title: '图片编辑',
+      icon: Stamp,
+    },
+    component: Editing,
   },
   {
     path: '/account',
