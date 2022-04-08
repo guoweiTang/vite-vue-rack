@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2022-04-08 17:10:16
  * @LastEditors: tangguowei
- * @LastEditTime: 2022-04-08 17:26:55
+ * @LastEditTime: 2022-04-08 17:34:54
 -->
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
@@ -38,9 +38,9 @@ async function handleSave() {
   }
 }
 // 展示图片编辑器弹窗
-async function handleShowImage(index) {
+async function handleShowImage(index: number) {
   currentIndex.value = index;
-  const url = this.urls[index];
+  const url = urls.value[index];
   dialogVisible.value = true;
   await nextTick();
   if (!instance.value) {
