@@ -3,7 +3,7 @@
  * @Author: tangguowei
  * @Date: 2022-04-08 17:10:16
  * @LastEditors: tangguowei
- * @LastEditTime: 2022-04-08 17:34:54
+ * @LastEditTime: 2022-04-12 17:08:22
 -->
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
@@ -15,7 +15,7 @@ const urls = ref([
   'https://scaleflex.cloudimg.io/v7/demo/spencer-davis-unsplash.jpg',
   'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
 ]);
-const instance = ref();
+let instance;
 const dialogVisible = ref(false);
 const currentIndex = ref(0);
 onMounted(() => {
@@ -30,7 +30,7 @@ onMounted(() => {
 // 保存修改后的图片
 async function handleSave() {
   try {
-    const url = await instance.value.toDataURL();
+    const url = await instance.toDataURL();
     urls.value[currentIndex.value] = url;
     dialogVisible.value = false;
   } catch (e) {
@@ -43,8 +43,8 @@ async function handleShowImage(index: number) {
   const url = urls.value[index];
   dialogVisible.value = true;
   await nextTick();
-  if (!instance.value) {
-    instance.value = new TangImageEditor('#drawingBoard', {
+  if (!instance) {
+    instance = new TangImageEditor('#drawingBoard', {
       imgSrc: url,
       color: '#F56C6C',
       lineWidth: 5,
@@ -52,7 +52,7 @@ async function handleShowImage(index: number) {
       maxHeight: 500,
     });
   } else {
-    instance.value.setImageSrc(url);
+    instance.setImageSrc(url);
   }
 }
 
